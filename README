@@ -1,1 +1,53 @@
 Just a Solver for Strata game
+
+Usage is pretty simple:
+1) Here is some terminology and assumptions:
+Size - side size of the board.
+I.e. you play 2x2 game then size = 2.
+If you play 3x3 game then size = 3.
+The cells of the board are numbered beginning at the top left, left to right, top to bottom
+I.e if you have 2x2 game then the board cells are
+0 1
+2 3
+If you have 3x3 game then the board cells are
+0 1 2
+3 4 5
+6 7 8
+
+Etc.
+
+The lines where you can make a stripe are numbered as follows:
+First, all horizontal stripes are numbered from 0 to size - 1.
+Then, all vertical stripes are numbered from size to size * size - 1.
+
+Therefore if you have 2x2 game then
+0
+1
+ 2 3
+
+If you have 3x3 game then
+0
+1
+2
+ 3 4 5
+
+For each colour you should assign a number between 0 and colours - 1
+Note that correspondence between colours and numbers must be unique.
+So you cannot assign the same number to two different colours.
+2) Create instance of StrataGame: StrataGame strataGame = new StrataGame(size, colours),
+where size - dimension of the board (i.e. if your game field is 2x2 then you should set it to 2)
+, colours - the number of colours used in the current instance of game (i.e if you have stripes of 3 colours, you should set it to 3).
+3) for each position which is not blank call: strataGame.setPosColour(i, colour)
+where i - is position on the board, colour - the colour of the the cell
+4) To get a solution call: Queue<Move> moves = StrataSolver.solve(strataGame);
+5) If there are no solutions then moves.size() will be 0.
+6) To get steps leading to victory iterate through a Queue, on each step receiving instance of Move
+which has two properties "move" and "colour". They can be read by methods "getMove" and "getColour" of class Move respectively.
+Let's say you play a game 2x2 and you have got the following step: 1 (less than "size") for move, and 2 for colour.
+It means that you should make a stripe of colour #2 (which you assigned to real colour in step 1) on the second row
+(rows are numbered from zero, so the first row is numbered 0, second - 1, etc)
+If you got a number for a move equal or larger than "size" then it means that you should make vertical stripe for column ("move" - "size").
+Note that columns are numbered from 0 too.
+So if you "move" - "size" = 1 then it means that you make a stripe on second column.
+Let's say you play a game 3x3 and you have got the following step: 4 (larger or equal than "size") for move, and 0 for colour.
+It means that you should make a stripe on second column (4 - 3 = 1, columns are numbered from 0).
