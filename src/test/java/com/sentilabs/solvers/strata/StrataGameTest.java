@@ -1,6 +1,6 @@
 package com.sentilabs.solvers.strata;
 
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
 public class StrataGameTest {
     @org.junit.Before
@@ -16,21 +16,21 @@ public class StrataGameTest {
     @org.junit.Test
     public void testGetSize() throws Exception {
         StrataGame strataGame = new StrataGame(3, 3);
-        Assert.assertEquals(3, strataGame.getSize());
+        assertEquals(3, strataGame.getSize());
         strataGame = new StrataGame(4, 2);
-        Assert.assertEquals(4, strataGame.getSize());
+        assertEquals(4, strataGame.getSize());
         strataGame = new StrataGame(2, 4);
-        Assert.assertEquals(2, strataGame.getSize());
+        assertEquals(2, strataGame.getSize());
     }
 
     @org.junit.Test
     public void testGetColours() throws Exception {
         StrataGame strataGame = new StrataGame(3, 3);
-        Assert.assertEquals(3, strataGame.getColours());
+        assertEquals(3, strataGame.getColours());
         strataGame = new StrataGame(4, 2);
-        Assert.assertEquals(2, strataGame.getColours());
+        assertEquals(2, strataGame.getColours());
         strataGame = new StrataGame(2, 4);
-        Assert.assertEquals(4, strataGame.getColours());
+        assertEquals(4, strataGame.getColours());
     }
 
     @org.junit.Test
@@ -40,10 +40,10 @@ public class StrataGameTest {
         strataGame.setPosColour(1, 1);
         strataGame.setPosColour(2, 1);
         strataGame.setPosColour(3, 0);
-        Assert.assertEquals(0, strataGame.getBoard().getPosColour(0));
-        Assert.assertEquals(1, strataGame.getBoard().getPosColour(1));
-        Assert.assertEquals(1, strataGame.getBoard().getPosColour(2));
-        Assert.assertEquals(0, strataGame.getBoard().getPosColour(3));
+        assertEquals(0, strataGame.getBoard().getPosColour(0));
+        assertEquals(1, strataGame.getBoard().getPosColour(1));
+        assertEquals(1, strataGame.getBoard().getPosColour(2));
+        assertEquals(0, strataGame.getBoard().getPosColour(3));
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -88,11 +88,11 @@ public class StrataGameTest {
         strataGame.setPosColour(0, 0);
         strataGame.setPosColour(1, 1);
         strataGame.makeMove(0, 0);
-        Assert.assertEquals(true, strataGame.checkIsPossibleSolution());
+        assertEquals(true, strataGame.checkIsPossibleSolution());
         strataGame.makeMove(2, 1);
-        Assert.assertEquals(false, strataGame.checkIsPossibleSolution());
+        assertEquals(false, strataGame.checkIsPossibleSolution());
         strataGame.undoLastMove();
         strataGame.makeMove(2, 0);
-        Assert.assertEquals(true, strataGame.checkIsPossibleSolution());
+        assertEquals(true, strataGame.checkIsPossibleSolution());
     }
 }

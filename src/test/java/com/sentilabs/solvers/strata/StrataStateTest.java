@@ -1,9 +1,10 @@
 package com.sentilabs.solvers.strata;
 
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class StrataStateTest {
     @Before
@@ -52,22 +53,22 @@ public class StrataStateTest {
         strataState.makeMove(0, 0);
         strataState.makeMove(2, 1);
         strataState.undoLastMove();
-        Assert.assertEquals(strataState.getPosColour(0), 0);
-        Assert.assertEquals(strataState.getPosColour(1), 0);
+        assertEquals(strataState.getPosColour(0), 0);
+        assertEquals(strataState.getPosColour(1), 0);
         strataState.undoLastMove();
-        Assert.assertEquals(strataState.getPosColour(0), -1);
-        Assert.assertEquals(strataState.getPosColour(1), -1);
+        assertEquals(strataState.getPosColour(0), -1);
+        assertEquals(strataState.getPosColour(1), -1);
     }
 
     @Test
     public void testGetPosColour() throws Exception {
         StrataState strataState = new StrataState(2);
         strataState.makeMove(0, 0);
-        Assert.assertEquals(0, strataState.getPosColour(0));
-        Assert.assertEquals(0, strataState.getPosColour(1));
+        assertEquals(0, strataState.getPosColour(0));
+        assertEquals(0, strataState.getPosColour(1));
         strataState.makeMove(2, 1);
-        Assert.assertEquals(1, strataState.getPosColour(2));
-        Assert.assertEquals(1, strataState.getPosColour(0));
+        assertEquals(1, strataState.getPosColour(2));
+        assertEquals(1, strataState.getPosColour(0));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -98,9 +99,9 @@ public class StrataStateTest {
     public void testIsMoveMade() throws Exception {
         StrataState strataState = new StrataState(2);
         strataState.makeMove(0, 0);
-        Assert.assertEquals(true, strataState.isMoveMade(0));
-        Assert.assertEquals(false, strataState.isMoveMade(1));
+        assertEquals(true, strataState.isMoveMade(0));
+        assertEquals(false, strataState.isMoveMade(1));
         strataState.makeMove(1, 0);
-        Assert.assertEquals(true, strataState.isMoveMade(1));
+        assertEquals(true, strataState.isMoveMade(1));
     }
 }

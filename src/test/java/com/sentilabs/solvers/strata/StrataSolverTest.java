@@ -1,12 +1,13 @@
 package com.sentilabs.solvers.strata;
 
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Queue;
+
+import static org.junit.Assert.assertEquals;
 
 public class StrataSolverTest {
     @Before
@@ -30,7 +31,7 @@ public class StrataSolverTest {
         strataGame.setPosColour(0, 0);
         strataGame.setPosColour(1, 1);
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -44,7 +45,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -58,7 +59,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -72,7 +73,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         List<Queue<Move>> sols = StrataSolver.solveAll(strataGame);
-        Assert.assertEquals(0, sols.size());
+        assertEquals(0, sols.size());
     }
 
     @Test
@@ -86,7 +87,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         List<Queue<Move>> sols = StrataSolver.solveAll(strataGame);
-        Assert.assertEquals(24, sols.size());
+        assertEquals(24, sols.size());
     }
 
     @Test
@@ -101,7 +102,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -116,7 +117,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -131,7 +132,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -146,7 +147,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -162,7 +163,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -178,7 +179,7 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         Queue<Move> moves = StrataSolver.solve(strataGame);
-        Assert.assertEquals(true, moves.size() > 0);
+        assertEquals(true, moves.size() > 0);
     }
 
     @Test
@@ -194,6 +195,6 @@ public class StrataSolverTest {
             strataGame.setPosColour(i, colours[i]);
         }
         List<Queue<Move>> sols = StrataSolver.solveAll(strataGame);
-        Assert.assertEquals(true, sols.size() > 0);
+        assertEquals(true, sols.size() > 0);
     }
 }

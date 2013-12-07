@@ -7,12 +7,12 @@ I.e. you play 2x2 game then size = 2.
 If you play 3x3 game then size = 3.
 The cells of the board are numbered beginning at the top left, left to right, top to bottom
 I.e if you have 2x2 game then the board cells are
-0 1
-2 3
+    0 1
+    2 3
 If you have 3x3 game then the board cells are
-0 1 2
-3 4 5
-6 7 8
+    0 1 2
+    3 4 5
+    6 7 8
 
 Etc.
 
@@ -21,15 +21,15 @@ First, all horizontal stripes are numbered from 0 to size - 1.
 Then, all vertical stripes are numbered from size to size * size - 1.
 
 Therefore if you have 2x2 game then
-0
-1
- 2 3
+    0
+    1
+     2 3
 
 If you have 3x3 game then
-0
-1
-2
- 3 4 5
+    0
+    1
+    2
+     3 4 5
 
 For each colour you should assign a number between 0 and colours - 1
 Note that correspondence between colours and numbers must be unique.
@@ -51,3 +51,5 @@ Note that columns are numbered from 0 too.
 So if you "move" - "size" = 1 then it means that you make a stripe on second column.
 Let's say you play a game 3x3 and you have got the following step: 4 (larger or equal than "size") for move, and 0 for colour.
 It means that you should make a stripe on second column (4 - 3 = 1, columns are numbered from 0).
+
+A little bit more detailed description you can find at http://sentlilabs.com/projects/strata-solver
