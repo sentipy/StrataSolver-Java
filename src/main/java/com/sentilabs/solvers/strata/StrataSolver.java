@@ -49,11 +49,25 @@ public class StrataSolver {
         return false;
     }
 
+    /**
+     * solve the strata game finding first possible solution
+     * @param game - instance of StrataGame with information about initial state of the game
+     *             (size of the board, number of colours, colours of the cells)
+     * @return queue of moves which must repeated to solve the game
+     * @throws IllegalStateException
+     */
     public static Queue<Move> solve(StrataGame game) throws IllegalStateException{
         solveFirst(game, 0);
         return game.getCurrentMoves();
     }
 
+    /**
+     * solve the strata game finding all possible solutions
+     * @param game - instance of StrataGame with information about initial state of the game
+     *             (size of the board, number of colours, colours of the cells)
+     * @return list of queues of moves which must repeated to solve the game
+     * @throws IllegalStateException
+     */
     public static List<Queue<Move>> solveAll(StrataGame game) throws IllegalStateException{
         List<Queue<Move>> sols = new ArrayList<Queue<Move>>();
         solveAll(game, 0, sols);

@@ -9,6 +9,11 @@ public class StrataGame implements IMovableCompletely {
     private StrataBoard board;
     private StrataState state;
 
+    /**
+     *
+     * @param size how many cells the board has on row (or column which is equal)
+     * @param colours how many colours used
+     */
     public StrataGame(int size, int colours){
         this.colours = colours;
         this.board = new StrataBoard(size);
@@ -27,6 +32,12 @@ public class StrataGame implements IMovableCompletely {
         return this.board;
     }
 
+    /**
+     * sets the colour of a cell
+     * @param pos position on the board (count from top left, from left to right, top down)
+     * @param colour the number of colour (which is assigned by you) to which set the cell
+     * @throws IllegalArgumentException
+     */
     public void setPosColour(int pos, int colour) throws IllegalArgumentException{
         if (colour >= this.colours){
             throw new IllegalArgumentException("Colour is out of range!");
@@ -34,6 +45,10 @@ public class StrataGame implements IMovableCompletely {
         this.board.setPosColour(pos, colour);
     }
 
+    /**
+     * check whether current state can be a possible solution
+     * @return whether current state can lead to solution
+     */
     public boolean checkIsPossibleSolution(){
         int size = this.board.getSize();
         int totalSize = size * size;

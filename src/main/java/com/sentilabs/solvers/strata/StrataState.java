@@ -24,6 +24,12 @@ public class StrataState implements IPosColourProvider, IMovableCompletely {
         this.movesColours = new Stack<Integer>();
     }
 
+    /**
+     * make move using specified move and colour
+     * @param move - number of the move to make
+     * @param colour - number of the colour (colour of the stripe) to use in this move
+     * @throws IllegalArgumentException
+     */
     @Override
     public void makeMove(int move, int colour) throws IllegalArgumentException{
         if (move < 0 || move >= this.movesStates.length){
@@ -55,6 +61,10 @@ public class StrataState implements IPosColourProvider, IMovableCompletely {
         this.movesColours.push(colour);
     }
 
+    /**
+     * undo the last made move thus reverting to state which precedes current one
+     * @throws IllegalStateException
+     */
     @Override
     public void undoLastMove() throws IllegalStateException {
         if (this.moves.size() == 0){
@@ -80,6 +90,14 @@ public class StrataState implements IPosColourProvider, IMovableCompletely {
         this.movesStates[move] = false;
     }
 
+    /**
+     * get the number of colour which the cell identified by pos currently has
+     * @param pos - position on the board
+     * @return the number of colour which the cell identified by pos currently has
+     * N.B. it is not a colour of the board cell
+     * it is a colour which board has after making moves (colour of the stripe which was last to cross specified cell)
+     * @throws IllegalArgumentException
+     */
     @Override
     public int getPosColour(int pos) throws IllegalArgumentException {
         if (pos < 0 || pos >= this.states.size()){
@@ -88,6 +106,12 @@ public class StrataState implements IPosColourProvider, IMovableCompletely {
         return this.states.get(pos).peek();
     }
 
+    /**
+     *
+     * @param move - number of the move. Refer to documentation to understand how the moves are numbered
+     * @return true if specified move has been already made
+     * @throws IllegalArgumentException
+     */
     public boolean isMoveMade(int move) throws IllegalArgumentException{
         if (move < 0 || move >= this.movesStates.length){
             throw new IllegalArgumentException("Move is out of range!");
@@ -95,6 +119,10 @@ public class StrataState implements IPosColourProvider, IMovableCompletely {
         return this.movesStates[move];
     }
 
+    /**
+     * get currently made moves
+     * @return queue of the made moves
+     */
     public Queue<Move> getCurrentMoves(){
         LinkedList<Move> curMoves = new LinkedList<Move>();
         Iterator<Integer> itMoves = this.moves.iterator();
